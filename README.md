@@ -1,3 +1,6 @@
 # Spotify Agata Makarewicz & Jacek Wiśniewski
 
-Analiza danych dostępnych dzięki API Spotify. Analiza popularności różnych gatunków muzycznych, składu playlist oraz pomijania utworów w kolejce.
+Aplikacja jest dedykowana artystom ze spotify. Artyści będą mogli porównać swoje wyniki z innymi podobnymi artystami. W aplikacji znajdą się takie porównania jak:
+
+* Popularność artysty w porównaniu do innych artystów danego gatunku/kraju.
+* Liczba obserwujących danego artystę.
