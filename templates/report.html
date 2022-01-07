@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Thanks{% endblock %}
+
+{% block content %}
+<a href="{{url_for('search')}}" >Search</a><br/>
+<h2>Artists belonging to the same genres</h2>
+{{ tables[0]|safe }}
+<h2>Top 10 tracks</h2>
+{{ tables[2]|safe }}
+<h2>Albums</h2>
+{{ tables[1]|safe }}
+{% endblock %}
