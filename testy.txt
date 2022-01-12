@@ -1,0 +1,14 @@
+- spotipy - screen folderu
+- scraping - screen pliku
+- nifi/hdfs - screen z konsoli, zliczenie liczby plików w folderach
+- spark1 - screen z konsoli pliku csv/folderu 
+- spark2/hbase - 
+- flask - screen ok, screen nie ok, screen zła długosc (?)
+
+
+-------------------
+5.	Testy funkcjonalne obejmujące zaimplementowane i skonfigurowane komponenty, przedstawione w postaci tabelarycznej:
+o	co jest testowane (cel)
+o	w jaki sposób jest testowane (kroki)
+o	jaki jest oczekiwany wynik
+o	potwierdzenie uzyskania wyniku (zrzuty ekranu, log z wykonania, itp.)
