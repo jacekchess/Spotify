@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %}Thanks{% endblock %}
+{% block title %}Report{% endblock %}
 
 {% block content %}
-<a href="{{url_for('search')}}" >Search</a><br/>
-<h2>Artists belonging to the same genres</h2>
-{{ tables[0]|safe }}
-<h2>Top 10 tracks</h2>
-{{ tables[2]|safe }}
-<h2>Albums</h2>
-{{ tables[1]|safe }}
+<button><a href="{{url_for('search')}}" >Search</a></button><br/>
+{% if tables %} 
+	<h2>Artists belonging to the same genres</h2>
+	<div id='genres'>
+	{{ tables[0]|safe }}
+	</div>
+	<h2>Top 10 tracks</h2>
+	{{ tables[2]|safe }}
+	<h2>Albums</h2>
+	{{ tables[1]|safe }}
+{% elif artist_id %}
+	<p>Artist ID not available in the database. </p>
+{% else %}
+	<p>Invalid artist ID.</p>
+{% endif %}
 {% endblock %}

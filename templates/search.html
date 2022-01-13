@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Raw Form Example{% endblock %}
+{% block title %}Search{% endblock %}
 
 {% block content %}
     <form method="POST" action="{{ url_for('report') }}">
@@ -8,6 +8,6 @@
             <label for="artist_id">Artist ID</label>
             <input id="artist_id" name="artist_id" type="text">
         </p>
-        <input type="submit" value="Show report">
+        <button type="submit" id="submit">Show report</button>
     </form>
 {% endblock %}

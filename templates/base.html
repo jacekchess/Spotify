@@ -3,6 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Title{% endblock %}</title>
+    <style>
+	h2 {color: #f18951;}
+	table {border-collapse: collapse;}
+	th, td {
+    		border: 1px solid black;
+    		text-align: left; padding: 5px;
+	}
+	th {background-color: #fccf7d;}
+	td {background-color: #fddaa4;}
+	#genres td:nth-child(1) {background-color: #fccf7d;}
+	html, body {
+    		font-family: "Open Sans", Calibri, serif;
+    		background-color: antiquewhite;
+		margin-left: 10px;
+	}
+	button {background-color: #ffe866;
+    		border-radius: 10px;
+    		border: 2px solid goldenrod;
+		width: 10%; 
+		padding: 5px 10px 5px 10px;}
+    </style>
 </head>
 <body>
     {% if message %}

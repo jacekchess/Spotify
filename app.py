@@ -4,35 +4,33 @@ from wtforms import StringField
 from PySparkReport import *
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'our very hard to guess secretfir'
+app.config['SECRET_KEY'] = 'secret_key'
 
-# strona z formularzem do wpisania id artysty
 @app.route('/search', methods=['GET', 'POST'])
 def search():
-    error = ""
-    if request.method == 'POST': 
-        # pobranie danych z formularza
-        artist_id = request.form['artist_id']
-
-        # walidacja - sprawdzenie długości id
-        if len(artist_id) != 22 :
-            # niepoprawny id
-            error = "ID too short. Please supply valid artist ID"
-        else:
-            # poprawne dane - przekierowanie do raportu
-            return redirect(url_for('report'))
+    if request.method == 'POST':
+        # przekierowanie do strony z raportem
+        return redirect(url_for('report'))
 
     return render_template('search.html', message=error)
 
 @app.route('/report', methods=['GET', 'POST'])
 def report():
-    # wywołanie funkcji generujących raport dla artysty
-    genres = generate_genres(request.form['artist_id'])
-    albums = generate_albums(request.form['artist_id'])
-    tracks = generate_tracks(request.form['artist_id'])
-    return render_template('report.html',  tables=[genres.to_html(classes='data', header="true"),
-                                                     albums.to_html(classes='data', header="true"),
-                                                     tracks.to_html(classes='data', header="true")])
+    artist_id = request.form['artist_id']
+    # obsługa identyfikatora zbyt krótkiego/długiego
+    if len(artist_id) != 22:
+        return render_template('report.html')
+    genres = generate_genres(artist_id) # artyści tworzący w tych samych gatunkach
+    albums = generate_albums(artist_id) # albumy
+    tracks = generate_tracks(artist_id) # utwory
+    # obsługa identyfikatora którego nie ma w bazie (nie ma gwarancji, że jest poprawny; ma tylko odpowiednią długość)
+    if isinstance(genres, int): 
+    	return render_template('report.html', artist_id=artist_id)
+    else: 
+        # obsługa identyfikatora będącego w bazie
+        albums.reset_index(inplace=True, drop=True)
+        return render_template('report.html',  tables=[genres.to_html(classes='data', header="true", index=False),
+                                                       albums.to_html(classes='data', header="true"),
+                                                       tracks.to_html(classes='data', header="true")])
 
-# uruchomienie aplikacji
 # app.run(debug=True)
