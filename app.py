@@ -12,7 +12,7 @@ def search():
         # przekierowanie do strony z raportem
         return redirect(url_for('report'))
 
-    return render_template('search.html', message=error)
+    return render_template('search.html')
 
 @app.route('/report', methods=['GET', 'POST'])
 def report():
